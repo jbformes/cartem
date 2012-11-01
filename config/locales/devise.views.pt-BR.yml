@@ -1,0 +1,46 @@
+pt-BR:
+  devise:
+    confirmations:
+      new:
+        title: Reenviar instruções de confirmação
+        submit: Reenviar instruções de confirmação
+      link: Não recebeu instruções de confirmação?
+    passwords:
+      edit:
+        title: Mudar sua senha
+        submit: Mudar minha senha
+      new:
+        title: Esqueceu sua senha?
+        submit: Me enviar instruções para reiniciar minha senha
+
+    sessions:
+      new:
+        title:    Login
+        submit:   Entrar
+        remember_me: Lembrar
+      link: Login com {provider}
+      signed_in:  Login efetuado com sucesso.
+      signed_out: Logout efetuado com sucesso.
+    
+    unlocks:
+      new:
+        title: Reenviar instruções de desbloqueio
+        submit: Reenviar instruções de desbloqueio
+      link: Não recebeu instruções de desbloqueio?
+
+    shared:
+      links:
+        forgot:   Esqueceu sua senha?
+        
+        
+    failure:
+      already_authenticated: Você já está autenticado.
+      inactive: A sua conta ainda não foi ativada.
+      invalid: Email ou senha inválidos.
+      invalid_token: O token de autenticação não é válido.
+      locked: A sua conta está bloqueada.
+      timeout: A sua sessão expirou, por favor, faça login novamente para continuar.
+      unauthenticated: Para continuar, faça login ou registre-se.
+      unconfirmed: Antes de continuar, confirme a sua conta.
+    
+    

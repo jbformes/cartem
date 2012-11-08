@@ -1,33 +1,40 @@
-<h1>Listing companies</h1>
+<%- model_class = Company -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Website</th>
-    <th>Email</th>
-    <th>Description</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= company.name %></td>
-    <td><%= company.address %></td>
-    <td><%= company.website %></td>
-    <td><%= company.email %></td>
-    <td><%= company.description %></td>
-    <td><%= company.category %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+      <!-- <%= model_class.human_attribute_name(:id) %>
+      <%= model_class.human_attribute_name(:name) %>
+      <%= model_class.human_attribute_name(:address) %>
+      <%= model_class.human_attribute_name(:website) %>
+      <%= model_class.human_attribute_name(:email) %>
+      <%= model_class.human_attribute_name(:description) %>
+      <%= model_class.human_attribute_name(:category_id) %> -->
 
-<br />
 
-<%= link_to 'New Company', new_company_path %>
+    <% @companies.each do |company| %>
+		<div class="well companies">
+			<h3><%= link_to company.name, company_path(company) %> <small> <%= company.address %></small></h3>
+
+			<div class="btn-group">
+				<%= link_to "#", :class => "btn btn-large" do %>
+				  <i class="icon-phone"> </i> (62) 3321 2020
+				<% end %>
+
+				<%= link_to company.website, :class => "btn btn-large btn-warning" do %>
+				  <i class="icon-home icon-white"> </i> Site
+				<% end %>
+
+				<%= link_to "#", :class => "btn btn-large" do %>
+				  <i class="icon-envelope"> </i> Mande um email!
+				<% end %>
+				
+				<%= link_to "#", :class => "btn btn-large" do %>
+				  <i class="icon-map-marker"> </i> Como chegar
+				<% end %>
+ 
+			</div>
+		</div>
+    <% end %>
+

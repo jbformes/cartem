@@ -11,12 +11,6 @@
 
   <!-- Le styles -->
 
-	<link rel="stylesheet/less" type="text/css" href="assets/less/variables.less">
-	<link rel="stylesheet/less" type="text/css" href="assets/less/bootswatch.less">
-
-	<script src="assets/js/less.min.js" type="text/javascript"></script>
-
-
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -41,12 +35,12 @@
 		  	<h1 class="logomarca">CAR<small>tendetudo.com</small></h1>
 		  </div>
 		  <div class="span8" style="margin-top:20px">
-		  	<img src="assets/img/car_city.png">
+		  	<%= image_tag "car_city.png" %>
 		  </div>
 		</div>
 
 		<div class="container navbar-wrapper">
-			<div class="navbar navbar-inverse">
+			<div class="navbar">
 			  <div class="navbar-inner">
 			    <div class="container">
 			      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -57,10 +51,16 @@
       
 			      <div class="nav-collapse">
 			        <ul class="nav">
-								<li class="active"><a href="index.html">Início</a></li>
-			          <li><a href="#">Serviços</a></li>
-								<li><a href="#">Peças</a></li>
-			          <li><a href="#">Manutenção</a></li>
+								<li class="active"><%= link_to "Início", root_path %></li>
+			          <li><%= link_to "Serviços", companies_path %></li>
+								<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Peças</a>
+								  <ul class="dropdown-menu">
+								    <li><a href="companies">Novas</a></li>
+								    <li><a href="companies">Salvas</a></li>
+								  </ul>
+								</li>
+			          <li><%= link_to "Manutenção", companies_path %></li>
 			          <li><a href="#">Anúncios</a></li>
 			          <li><a href="#">Contato</a></li>
 			        </ul>
@@ -72,7 +72,20 @@
 
 	</header>
 	
-	<section class="container"><%= yield %></section>
+	<section class="container">
+	
+
+				<%= yield %>				
+
+		
+		<hr/>
+    <footer>
+      <p>&copy; Rede Car 2012 - Todos os direitos reservados</p>
+    </footer>
+	
+	</section>
+	
+	
 	
 </body>
 </html>

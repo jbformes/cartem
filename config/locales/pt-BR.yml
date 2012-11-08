@@ -4,17 +4,17 @@ pt-BR:
   error_message_header: "%{model} não pode ser gravado(a). Verifique campos não preenchidos."
   
   admin:
-    news_articles:
+    companies:
       index:
-        title:   Notícias
-        actions: Modificar
+        title:   Empresas
+        actions: Ações
       
       new:
-        title:  Adicionando Notícia
-        submit: Publicar
+        title:  Adicionando Empresa
+        submit: Adicionar
       
       edit:
-        title: Editando Notícia
+        title: Editando dados de Empresa
 
   attributes:
     created_at: "Criado em"
@@ -31,26 +31,26 @@ pt-BR:
   activerecord:
 
     models:
-      news_article:
-        one:          Notícia
-        other:        Notícias
+      company:
+        one:          Empresa
+        other:        Empresas
       
       photo:          Foto
       
-      section:        Caderno
-    
+      category:
+        one:          Categoria
+        other:        Categorias
+
     attributes:
-      news_article:   
-        head:         Título
-        overline:     Chapéu
-        subhead:      Linha fina
-        lead:         Lide
-        body:         Texto
-        section:      Editoria
-        section_id:   Editoria
-        headline:     Manchete
+      company:
+        name:         Nome
+        address:      Endereço
+        description:  Descrição
+        category_id:  Categoria
+        category:     Categoria
     
-      section:
+      category:
+        name:         Nome
 
   date:
     abbr_day_names:
@@ -182,6 +182,8 @@ pt-BR:
         other: ! 'Não foi possível gravar %{model}: %{count} erros.'
   
   helpers:
+
+    actions:  Ações
 
     links:
       new:     Adicionar

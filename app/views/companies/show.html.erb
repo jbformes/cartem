@@ -1,35 +1,17 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Company -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %> <small> <%= @company.name %></small></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @company.name %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @company.address %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @company.website %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @company.email %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @company.description %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @company.category %>
-</p>
-
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dd><%= @company.address %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:website) %>:</strong></dt>
+  <dd><%= @company.website %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @company.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @company.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
+  <dd><%= @company.category_id %></dd>
+</dl>

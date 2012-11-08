@@ -1,9 +1,11 @@
 Cartem::Application.routes.draw do
   resources :companies
 
-  resources :categories
-
-  devise_for :users
+  devise_for :users, :controllers => {
+    :sessions  => "admin/sessions",
+    :passwords => "admin/passwords"
+  }
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,7 +56,7 @@ Cartem::Application.routes.draw do
     # (app/controllers/admin/companies_controller.rb)
     resources :companies
     
-    resources :categories, :except => [:show]
+    resources :categories
     resources :users, :except => [:show]
     
   end

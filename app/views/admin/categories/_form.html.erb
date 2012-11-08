@@ -1,9 +1,19 @@
 <%= form_for ["admin", @category] do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
+	<div class="control-group">
+    <%= f.label :name %>
+		<div class="controls"></div>
     <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+	<div class="control-group">
+		<%= f.label :category, :class => 'control-label' %>
+		<div class="controls">
+		  <%= f.collection_select(:parent_id, @categories, :id, :name, {:prompt => true}) %>
+		</div>
+	</div>
+
+  <div class="form-actions">
+    <%= f.submit :class => "btn btn-primary" %>
+		<%= link_to 'Back', admin_categories_path, :class => "btn" %>
   </div>
 <% end %>

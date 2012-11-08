@@ -1,9 +1,5 @@
-class CompaniesController < ApplicationController
-  
-  before_filter :load_resources, :only => [:new, :create, :edit, :update] 
-  
-  # GET /companies
-  # GET /companies.json
+class CompaniesController < ApplicationController  
+
   def index
     @companies = Company.all
 
@@ -13,8 +9,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
 
@@ -23,11 +17,5 @@ class CompaniesController < ApplicationController
       format.json { render json: @company }
     end
   end
-
-protected
-  def load_resources
-    @categories = Category.all
-  end
-
 
 end

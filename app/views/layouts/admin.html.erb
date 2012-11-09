@@ -67,7 +67,15 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span12">
+				<div class="span3 well">
+					<ul class="nav nav-list">
+						<li class="nav-header">Navegação</li>
+						<li class="active"><%= link_to "Início", admin_root_path %></li>
+						<li><%= link_to "Empresas", admin_companies_path %></li>
+						<li><%= link_to "Categorias", admin_categories_path %></li>
+					</ul>
+				</div>
+        <div class="span9 well main_content">
 					<%= flash_messages %>
           <%= yield %>
         </div>

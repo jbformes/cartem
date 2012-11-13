@@ -3,7 +3,7 @@ class Admin::CompaniesController < Admin::AdminController
   before_filter :load_resources, :only => [:new, :create, :edit, :update] 
   
   def index
-    @companies = Company.all
+    @companies = Company.paginate(:page => params[:page])
     respond_with @companies
   end
 
@@ -45,5 +45,4 @@ protected
   def load_resources
     @categories = Category.all
   end
-
 end

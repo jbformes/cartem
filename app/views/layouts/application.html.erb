@@ -54,7 +54,7 @@
 								<li class="active"><%= link_to "Início", root_path %></li>
                 <% @category_roots.each do |category| %>
   								<%= content_tag_for :li, category do %>
-  									<%= link_to category.name, companies_path(:category_id => category.id) %>
+  									<%= link_to category.name, companies_path(:category_root => category.id) %>
   								<% end %>
   							<% end %>
 			          <li><%= link_to "Manutenção", companies_path %></li>

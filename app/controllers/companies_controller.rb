@@ -4,10 +4,12 @@ class CompaniesController < ApplicationController
   
   def index
     @companies = Company.scoped
-    if params[:category_id].present?
-      category = Category.find(params[:category_id])
-      @companies = @companies.in_categories(category.descendants)
-    end
+    @companies = @companies.in_categories(@category_root.descendants) if @category_root.present?
+    @companies = @category.companies if @category.present?
+    @companies = @companies.paginate(:page => params[:page]) 
+    #maybe the above is wrong because we already have made the search and so its doing a repeated
+    # retrieve on database, now if I put it on Company.scoped.paginate it doesn't work with
+    # params[:category_id]
     respond_with @companies
   end
 
@@ -17,7 +19,9 @@ class CompaniesController < ApplicationController
   end
 
   def load_resources
-    # @category = Category.find(params[:category_id]) if params[:category_id]
+    # do it better
+    @category_root = Category.find(params[:category_root]) if params[:category_root]
+    @category = Category.find(params[:category_id]) if params[:category_id]
     @category_roots = Category.roots
   end
 

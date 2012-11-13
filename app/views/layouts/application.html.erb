@@ -52,14 +52,11 @@
 			      <div class="nav-collapse">
 			        <ul class="nav">
 								<li class="active"><%= link_to "Início", root_path %></li>
-			          <li><%= link_to "Serviços", companies_path %></li>
-								<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Peças</a>
-								  <ul class="dropdown-menu">
-								    <li><a href="companies">Novas</a></li>
-								    <li><a href="companies">Salvas</a></li>
-								  </ul>
-								</li>
+                <% @category_roots.each do |category| %>
+  								<%= content_tag_for :li, category do %>
+  									<%= link_to category.name, companies_path(:category_id => category.id) %>
+  								<% end %>
+  							<% end %>
 			          <li><%= link_to "Manutenção", companies_path %></li>
 			          <li><a href="#">Anúncios</a></li>
 			          <li><a href="#">Contato</a></li>

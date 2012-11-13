@@ -1,5 +1,13 @@
 <%= form_for ["admin", @company] do |f| %>
 
+	<div class="control-group">
+		<%= f.label :category, :class => 'control-label' %>
+		<div class="controls">
+		  <%= f.select :category_id, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" }, {:prompt => true} %>
+		</div>
+	</div>
+	
+
   <div class="control-group">
 		<%= f.label :name %>
 		<div class="controls">
@@ -31,13 +39,6 @@
     	<%= f.text_area :description, :class => "span6" %>
 		</div>
   </div>
-
-	<div class="control-group">
-		<%= f.label :category, :class => 'control-label' %>
-		<div class="controls">
-		  <%= f.collection_select(:category_id, @categories, :id, :name, {:prompt => true}, :multiple => "multiple") %>
-		</div>
-	</div>
 
 	<br/>
 

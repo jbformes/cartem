@@ -3,7 +3,7 @@ class Admin::CategoriesController < Admin::AdminController
   before_filter :load_resources, :only => [:new, :create, :edit, :update] 
 
   def index
-    @categories = Category.all
+    @categories = Category.roots
     respond_with @categories
   end
 
@@ -24,7 +24,7 @@ class Admin::CategoriesController < Admin::AdminController
   def create
     @category = Category.new(params[:category])
     flash[:notice] = "Categoria Adicionada." if @category.save
-    respond_with @category, :location => admin_category_path
+    respond_with @category, :location => admin_categories_path
 
   end
 

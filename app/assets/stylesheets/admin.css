@@ -5,3 +5,7 @@
 .main_content{
 	background-color:white;
 }
+
+.field_with_errors label {
+  color:red
+}

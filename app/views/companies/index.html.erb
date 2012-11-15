@@ -1,42 +1,65 @@
-<%- model_class = Company -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<div class="span12" >
 </div>
-
-
-      <!-- <%= model_class.human_attribute_name(:id) %>
-      <%= model_class.human_attribute_name(:name) %>
-      <%= model_class.human_attribute_name(:address) %>
-      <%= model_class.human_attribute_name(:website) %>
-      <%= model_class.human_attribute_name(:email) %>
-      <%= model_class.human_attribute_name(:description) %>
-      <%= model_class.human_attribute_name(:category_id) %> -->
-
-
-    <% @companies.each do |company| %>
-		<div class="well companies">
-			<h3><%= link_to company.name, company_path(company) %> <small> <%= company.address %></small></h3>
-
-			<div class="btn-group">
-				<%= link_to "#", :class => "btn btn-large" do %>
-				  <i class="icon-phone"> </i> (62) 3321 2020
+<div class="span2">
+	<div class="sidebar-nav filters">
+		<% if @category_root %>
+			<button class="btn btn-large btn-block btn-primary" type="button"><%= @category_root.name %></button>
+			<ul class="nav nav-tabs nav-stacked">
+				<% @category_root.descendants.each do |category| %>
+					<%= nav_link category.name, companies_path(:category_root => @category_root, :category_id => category.id), {:class => ''}, {:wrapper => 'li', :wrapper_class => 'test-wrapper', :selected_class => 'active'} %>
 				<% end %>
+			</ul>
+		<% end %>
+	</div>
+</div>
+<div class="span8">
 
-				<%= link_to company.website, :class => "btn btn-large btn-warning" do %>
-				  <i class="icon-home icon-white"> </i> Site
-				<% end %>
-
-				<%= link_to "#", :class => "btn btn-large" do %>
-				  <i class="icon-envelope"> </i> Mande um email!
-				<% end %>
-				
-				<%= link_to "#", :class => "btn btn-large" do %>
-				  <i class="icon-map-marker"> </i> Como chegar
-				<% end %>
- 
-			</div>
-		</div>
-
-    <% end %>
+  <% @companies.each do |company| %>
+	<div class="companies">
+		<small><%= link_to company.category.name, companies_path(:category_id => company.category.id) %></small>
+		<h3><%= link_to company.name, company_path(company) %> - <i class="icon-phone"> </i> <%= company.phone %></h3>    
+	<p class="">
+		<%= company.address %>
+	</p>
+	<div>
+		<%= link_to "#", :class => "btn btn-mini" do %>
+	   <i class="icon-map-marker"> </i> Como chegar
+		<% end %>
+		<%= link_to company.website, :class => "btn btn-mini" do %>
+			<i class="icon-home icon-white"> </i> Site
+		<% end %>
+		<%= link_to "#", :class => "btn btn-mini" do %>
+		  <i class="icon-envelope"> </i> e-mail
+		<% end %>
+	</div>
+</div>
+<hr/>
+<% end %>
     
-    <%= will_paginate @companies %>
+	<%= will_paginate @companies, :previous_label => "<<", :next_label => ">>", :class => "pagination pagination-large"  %>
+
+</div>
+<div class="span2">
+	<ul class="thumbnails">
+	  <li class="span2">
+	    <a href="#" class="thumbnail">
+	      <img src="assets/nasa_veiculos.png">
+	    </a>
+	  </li>
+	  <li class="span2">
+	    <a href="#" class="thumbnail">
+	      <img src="assets/jaicar.png">
+	    </a>
+	  </li>
+	  <li class="span2">
+	    <a href="#" class="thumbnail">
+	      <img src="assets/autoeste.jpeg">
+	    </a>
+	  </li>
+	  <li class="span2">
+	    <a href="#" class="thumbnail">
+	      <img src="assets/nasa_kia.png">
+	    </a>
+	  </li>
+	</ul>
+</div>

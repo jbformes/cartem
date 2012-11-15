@@ -1,5 +1,7 @@
 <%= form_for ["admin", @company] do |f| %>
 
+	<%= error_messages_for @company %>
+
 	<div class="control-group">
 		<%= f.label :category, :class => 'control-label' %>
 		<div class="controls">
@@ -11,9 +13,17 @@
   <div class="control-group">
 		<%= f.label :name %>
 		<div class="controls">
-    	<%= f.text_field :name, :class => 'input-xxlarge' %>
+    	<%= f.text_field :name, :class => 'span6' %>
   	</div>
 	</div>
+
+	<div class="control-group">
+    <%= f.label :phone %>
+		<div class="controls">
+    	<%= f.text_field :phone, :class => "span6" %>
+  	</div>
+	</div>
+
   <div class="control-group">
     <%= f.label :address %>
 		<div class="controls">
@@ -47,3 +57,15 @@
 		<%= link_to 'Back', admin_companies_path, :class => "btn" %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+	jQuery(function($){
+	   $("#company_phone").mask("(99) 9999-9999");
+	});
+	$(function(){
+	  $('#company_website').bind('click', function(e){
+	    if($.trim($(e.target).val())=='') $(e.target).val('http://');
+	  })
+	})
+	
+</script>

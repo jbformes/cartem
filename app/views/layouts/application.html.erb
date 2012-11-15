@@ -25,6 +25,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 	<header class="container">
@@ -32,7 +33,9 @@
     <!-- Main hero unit for a primary marketing message or call to action -->
 		<div class="row">
 		  <div class="span4">
-		  	<h1 class="logomarca">CAR<small>tendetudo.com</small></h1>
+		  	<%= link_to root_path do %>
+					<h1 class="logomarca">CAR<small>tendetudo.com</small></h1>
+				<% end %>
 		  </div>
 		  <div class="span8" style="margin-top:20px">
 		  	<%= image_tag "car_city.png" %>
@@ -51,15 +54,10 @@
       
 			      <div class="nav-collapse">
 			        <ul class="nav">
-								<li class="active"><%= link_to "Início", root_path %></li>
+								<%= nav_link "Início", root_path, {:class => ''}, {:wrapper => 'li', :wrapper_class => 'test-wrapper', :selected_class => 'active'} %>
                 <% @category_roots.each do |category| %>
-  								<%= content_tag_for :li, category do %>
-  									<%= link_to category.name, companies_path(:category_root => category.id) %>
-  								<% end %>
+									<%= nav_link category.name, companies_path(:category_root => category.id), {:class => ''}, {:wrapper => 'li', :wrapper_class => 'test-wrapper', :selected_class => 'active'} %>
   							<% end %>
-			          <li><%= link_to "Manutenção", companies_path %></li>
-			          <li><a href="#">Anúncios</a></li>
-			          <li><a href="#">Contato</a></li>
 			        </ul>
 			      </div><!-- /.nav-collapse -->
 			    </div>
@@ -70,19 +68,17 @@
 	</header>
 	
 	<section class="container">
-	
+		<div class="row">
+		<%= yield %>
+		</div>
 
-				<%= yield %>				
-
-		
 		<hr/>
     <footer>
       <p>&copy; Rede Car 2012 - Todos os direitos reservados</p>
     </footer>
 	
 	</section>
-	
-	
-	
+	<script type="text/javascript">
+	</script>
 </body>
 </html>

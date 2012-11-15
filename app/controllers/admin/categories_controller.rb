@@ -3,7 +3,7 @@ class Admin::CategoriesController < Admin::AdminController
   before_filter :load_resources, :only => [:new, :create, :edit, :update] 
 
   def index
-    @categories = Category.roots
+    @categories = Category.all
     respond_with @categories
   end
 

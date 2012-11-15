@@ -111,16 +111,24 @@ code, pre {
 }
 
 .companies h3{
-
-	line-height:1.6em	;
+	margin:0;
+	margin-bottom:10px;
+	line-height:1.5em	;
 	font-size:1.6em;
+	color:@grayLight;
 }
 
 .companies h3 a{
-	color:@orange;
+	color:@grayDarker;
 }
 
 .companies h3 a:hover{text-decoration:none;}
+
+.filters ul li a{
+	color:@grayDark;
+}
+
+.where_am_i{ padding:0.5% 0 0}
 
 // SCAFFOLDING
 // -----------------------------------------------------
@@ -137,14 +145,14 @@ code, pre {
 	.brand {
 		font-weight: bold;
 		line-height: 1em;
-		padding: 15px 15px 7px;
+		padding: 15px 15px 8px;
 		&:hover {
 			color: @linkColorHover;
 		}
 	}
 
 	.navbar-inner {
-		.border-radius(2px);
+		.border-radius(3px);
   }
 
 	.nav {
@@ -153,7 +161,8 @@ code, pre {
 
 	.nav > li > a {
 		text-shadow: none;
-		padding: 10px 35px 8px;
+		padding: 15px 35px 12px;
+		font-size:1.2em;
 	}
 
 	.nav > li > a:hover{
@@ -163,7 +172,10 @@ code, pre {
 	.nav > .active > a,
 	.nav > .active > a:hover,
 	.nav > .active > a:focus {
-		.box-shadow(inset 0 2px 12px rgba(0,0,0,.18));
+/*		.box-shadow(inset 0 2px 12px rgba(0,0,0,.18));
+		#gradient > .vertical(lighten(@orange, 15%), @orange);*/
+		color:@orange;
+		.box-shadow(none);
 	}
 
 	.navbar-search {

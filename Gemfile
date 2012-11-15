@@ -7,7 +7,15 @@ gem 'rails', '3.2.8'
 
 gem 'devise', '2.1.2'
 
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'  
+end
+
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
+
 gem 'twitter-bootstrap-rails', '2.1.3'
 
 gem 'will_paginate', '~> 3.0'
